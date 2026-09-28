@@ -1,5 +1,5 @@
+#pragma once
 #include <string>
-#include <iostream>
 
 class Beverage {
     public:
@@ -9,6 +9,7 @@ class Beverage {
 };
 
 class Espresso : public Beverage {
+public:
     std::string getDescription() const override {
         return "Espresso";
     }
@@ -19,6 +20,7 @@ class Espresso : public Beverage {
 };
 
 class Latte : public Beverage {
+public:
     std::string getDescription() const override {
         return "Latte";
     }
@@ -28,7 +30,8 @@ class Latte : public Beverage {
     }
 };
 
-class greenTea : public Beverage {
+class GreenTea : public Beverage {
+public:
     std::string getDescription() const override {
         return "Green Tea";
     }

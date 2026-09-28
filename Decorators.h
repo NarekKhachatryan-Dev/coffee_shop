@@ -1,5 +1,9 @@
+#pragma once
+
 #include "Beverage.h"
 #include <memory>
+#include <stdexcept>
+#include <utility>
 
 /* milk, sugar, whipped cream, caramel */
 
@@ -14,7 +18,11 @@ class BeverageDecorator : public Beverage {
         return beverage->getDescription();
     }
 
-    BeverageDecorator(std::shared_ptr<Beverage> b) : beverage(b)  {}
+    explicit BeverageDecorator(std::shared_ptr<Beverage> b) : beverage(std::move(b)) {
+        if (!beverage) {
+            throw std::invalid_argument("A beverage decorator requires a beverage");
+        }
+    }
     virtual ~BeverageDecorator() = default;
 };
 
